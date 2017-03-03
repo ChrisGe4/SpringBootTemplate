@@ -1,10 +1,12 @@
-package com.config;
+package com;
 
+import com.config.AppConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.core.env.AbstractEnvironment;
 import org.springframework.core.env.Environment;
 
 /**
@@ -15,6 +17,10 @@ import org.springframework.core.env.Environment;
 public class Application {
 
     public static void main(String[] args) {
+
+        System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, "dev");
+        System.setProperty("management.security.enabled", "false");
+
         SpringApplication.run(Application.class);
     }
 
@@ -35,5 +41,5 @@ public class Application {
     }
 
 
-    
+
 }

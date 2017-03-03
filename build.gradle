@@ -1,15 +1,22 @@
 buildscript {
-    ext { springBootVersion = '1.4.1.RELEASE' }
-    repositories { mavenCentral() }
+    ext {
+        springBootVersion = '2.0.0.BUILD-SNAPSHOT'
+    }
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
+
+
 
 jar {
     baseName = 'springTraining'
@@ -19,17 +26,27 @@ jar {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-repositories { mavenCentral() }
-
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
+}
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Camden.SR5'
+    }
+}
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
-     optional("org.springframework.boot:spring-boot-configuration-processor")
-
+    compile "org.springframework.boot:spring-boot-configuration-processor"
+    compile 'org.springframework.cloud:spring-cloud-starter-config'
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
     testCompile("org.springframework.boot:spring-boot-starter-test")
+
 }
 
-task wrapper(type: Wrapper) { gradleVersion = '1.12' }
+//task wrapper(type: Wrapper) { gradleVersion = '1.12' }
 
 /*
 You need to add compileJava.dependsOn(processResources) to your build to ensure that resources are processed before code is compiled. Without this directive any additional-spring-configuration-metadata.json files will not be processed.
