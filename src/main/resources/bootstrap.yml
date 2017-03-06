@@ -1,6 +1,17 @@
+
+server:
+    port: 9001
+#spring:
+#  cloud:
+#    config:
+#      server:
+#        git :
+#          uri: https://github.com/ChrisGe4/SpringBootTemplate
+
 spring:
   application:
-    name: config-client
+    name: spring-boot-template #will look for {name}.properties/yml in the server
+#this is for client setup, will go to localhost:8888/spring-boot-template/master to file the settings
   cloud:
     config:
-      uri: ${SPRING_CONFIG_URI:http://localhost:8080}
+      uri: http://localhost:8888 #${SPRING_CONFIG_URI:http://localhost:8888}

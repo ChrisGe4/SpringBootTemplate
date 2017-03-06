@@ -1,11 +1,14 @@
 package com.bootstrap;
 
 import com.pojo.Database;
+import com.pojo.UserDatastore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.web.client.RestTemplate;
 
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -19,6 +22,9 @@ import java.io.IOException;
 @Configuration //use to create bean, can be loaded via different approach
 //@ComponentScan(basePackages = { "com.springclass.configuration" })
 public class DevVersionCreatBeansWithProfile {
+
+    @Value("${server.port}")
+    private String port;
 
     //by default, its singleton
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)//or use"prototype"
@@ -35,6 +41,24 @@ public class DevVersionCreatBeansWithProfile {
 
         System.out.println(" create data source ");
         return null;
+    }
+
+    @Bean("users")
+    public UserDatastore getUserDatasource() {
+        return UserDatastore.getuserDatastore();
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+
+    @Bean
+    public String baseUrl() {
+
+
+
+        return String.format("http://localhost:{}", port);
     }
 
     @Bean

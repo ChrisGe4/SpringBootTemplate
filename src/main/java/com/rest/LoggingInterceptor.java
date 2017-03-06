@@ -2,6 +2,7 @@ package com.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,6 +14,7 @@ import java.util.Enumeration;
 /**
  * @author Chris.Ge
  */
+@Component
 public class LoggingInterceptor implements HandlerInterceptor {
     private static final Logger logger = LoggerFactory.getLogger(LoggingInterceptor.class);
 
@@ -60,6 +62,7 @@ public class LoggingInterceptor implements HandlerInterceptor {
         logger.info("afterCompletion:: executed---");
 
         logger.info("afterCompletion:: handler Class: {}", handler.getClass().getName());
+        logger.info("afterCompletion:: response code---" + response.getStatus());
 
         if (ex != null) {
             logger.error("afterCompletion:: Exception Class: {}, {}", ex.getClass().getName(),

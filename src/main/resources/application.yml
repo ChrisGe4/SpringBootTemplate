@@ -1,19 +1,19 @@
-configuration:
-  projectName : Spring Boot
-
 
 #profile-specific properties can also be defined using the naming convention application-{profile}.properties
 spring:
     profiles: dev
+#configuration:
+#    projectName : Spring-Boot
     #if you want to override property from config server by system property, also see bootstrap.yml
     cloud:
             config:
+#              server:
+#                    git :
+#                      uri: https://github.com/ChrisGe4/SpringBootTemplate
                 allowOverride: true
                 failFast: true
                 overrideNone: false
                 overrideSystemProperties: false
-                #            ^--- this has to be false
-server:
-    port: 9001
+                 #           ^--- this has to be false
 
 

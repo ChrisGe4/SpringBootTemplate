@@ -14,6 +14,10 @@ public class Database {
         this.num = num;
     }
 
+    public int getBigNum(int num) {
+        return num + 1;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Database{");
