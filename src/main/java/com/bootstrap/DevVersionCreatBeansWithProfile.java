@@ -10,7 +10,6 @@ import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.web.client.RestTemplate;
 
-import javax.sql.DataSource;
 import java.io.IOException;
 
 /**
@@ -37,10 +36,10 @@ public class DevVersionCreatBeansWithProfile {
     }
 
     @Bean("devDataSource")
-    public DataSource dataSource() {
+    public String dataSource() {
 
         System.out.println(" create data source ");
-        return null;
+        return "datasource";
     }
 
     @Bean("users")
@@ -71,7 +70,7 @@ public class DevVersionCreatBeansWithProfile {
     @Bean
     @Autowired
     @DependsOn({"propertySources"})//change the bean creation order
-    public Database createDB(@Qualifier("devDataSource") final DataSource ds, int number
+    public Database createDB(@Qualifier("devDataSource") final String ds, int number
         //number will be injected
     ) {
         System.out.println("create DB");

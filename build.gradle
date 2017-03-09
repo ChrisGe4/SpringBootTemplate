@@ -6,13 +6,14 @@ buildscript {
         mavenCentral()
         maven { url "https://repo.spring.io/snapshot" }
         maven { url "https://repo.spring.io/milestone" }
+        maven { url "http://repo.spring.io/libs-release-local" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 apply plugin: 'java'
-apply plugin: 'eclipse'
+//apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
@@ -39,6 +40,16 @@ dependencyManagement {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
+
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile('org.springframework.boot:spring-boot-starter-data-redis')
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile group: 'com.h2database', name: 'h2'
+    compile group: 'org.flywaydb', name: 'flyway-core'
+    runtime group: 'mysql', name: 'mysql-connector-java'
+
+
+
     compile "org.springframework.boot:spring-boot-configuration-processor"
     compile 'org.springframework.cloud:spring-cloud-starter-config'
     compile 'org.springframework.cloud:spring-cloud-config-client'

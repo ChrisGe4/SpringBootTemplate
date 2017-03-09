@@ -1,15 +1,13 @@
 package com.pojo;
 
-import javax.sql.DataSource;
-
 /**
  * @author Chris.Ge
  */
 public class Database {
-    private final DataSource ds;
+    private final String ds;
     private final int num;
 
-    public Database(DataSource ds, int num) {
+    public Database(String ds, int num) {
         this.ds = ds;
         this.num = num;
     }

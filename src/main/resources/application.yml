@@ -15,5 +15,7 @@ spring:
                 overrideNone: false
                 overrideSystemProperties: false
                  #           ^--- this has to be false
-
+    jpa:
+        hibernate:
+          ddl-auto: validate #tell jpa not create schema
 
