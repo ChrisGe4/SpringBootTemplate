@@ -7,16 +7,23 @@ buildscript {
         maven { url "https://repo.spring.io/snapshot" }
         maven { url "https://repo.spring.io/milestone" }
         maven { url "http://repo.spring.io/libs-release-local" }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "gradle.plugin.com.boxfuse.client:flyway-release:4.1.2"
+
     }
 }
+
+
 apply plugin: 'java'
 //apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-
+apply plugin: "org.flywaydb.flyway"
 
 
 jar {
@@ -44,6 +51,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile('org.springframework.boot:spring-boot-starter-data-redis')
     compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+
     compile group: 'com.h2database', name: 'h2'
     compile group: 'org.flywaydb', name: 'flyway-core'
     runtime group: 'mysql', name: 'mysql-connector-java'
