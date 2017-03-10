@@ -13,6 +13,8 @@ public class DataJdbcApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DataJdbcApplication.class, args);
+        System.exit(0);
+
     }
 
     @Bean

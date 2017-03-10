@@ -30,6 +30,8 @@ public class DataMongoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DataMongoApplication.class, args);
+        System.exit(0);
+
     }
 
     @Bean

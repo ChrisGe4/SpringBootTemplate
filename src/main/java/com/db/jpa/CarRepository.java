@@ -1,11 +1,13 @@
 package com.db.jpa;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 /**
  * @author Chris.Ge
  */
 //automatically picked up
 public interface CarRepository extends CrudRepository<Car, Long> {
-    Iterable<Car> findByMakeIgnoringCase(String make);
+    // @RestResource(path = "find")
+    Iterable<Car> findByMakeIgnoringCase(@Param("make") String make);
 }
