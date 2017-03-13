@@ -55,7 +55,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-elasticsearch")
     compile("org.springframework.boot:spring-boot-starter-data-rest")
 
-    compile group: 'com.h2database', name: 'h2'
+//    compile group: 'com.h2database', name: 'h2'
+    compile group: 'org.postgresql', name: 'postgresql'
     compile group: 'org.flywaydb', name: 'flyway-core'
     runtime group: 'mysql', name: 'mysql-connector-java'
 

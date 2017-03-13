@@ -4,7 +4,6 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
@@ -19,8 +18,8 @@ public class DataElasticsearchApplication {
         System.exit(0);
     }
 
-    @Bean
-    public InitializingBean seedDatabase(CarRepository repository) {
+    // @Bean
+    public InitializingBean seedDatabase(CarEsRepository repository) {
         return () -> {
             repository.deleteAll();
             repository.save(new Car("Honda", "Civic", 1997));
@@ -30,8 +29,8 @@ public class DataElasticsearchApplication {
     }
 
     //performing a fuzzy search for manufacturers like `ronda`.
-    @Bean
-    public CommandLineRunner example(CarRepository repository, ElasticsearchTemplate template) {
+    //  @Bean
+    public CommandLineRunner example(CarEsRepository repository, ElasticsearchTemplate template) {
         return (args) -> {
             System.err.println("From the repository...");
             repository.findByMakeIgnoringCase("fOrD").forEach(System.err::println);

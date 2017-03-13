@@ -51,7 +51,7 @@ public class Application {
     //use this for startup.
     //now done by flyway
     //    @Bean
-    //    public InitializingBean seedDatabase(CarRepository repository) {
+    //    public InitializingBean seedDatabase(CarEsRepository repository) {
     //        return () -> {
     //            repository.save(new Car("Honda", "Civic", 1997));
     //            repository.save(new Car("Honda", "Accord", 2003));

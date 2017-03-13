@@ -35,7 +35,7 @@ public class DataMongoApplication {
     }
 
     @Bean
-    public InitializingBean seedDatabase(CarRepository repository) {
+    public InitializingBean seedDatabase(CarMongodbRepository repository) {
         return () -> {
             System.out.println(repository.count());
             repository.deleteAll();
@@ -48,12 +48,12 @@ public class DataMongoApplication {
     }
 
     /**
-     * The `CarRepository` works in the same way as any Spring Data repository and has the
+     * The `CarEsRepository` works in the same way as any Spring Data repository and has the
      * familiar `findByMakeIgnoringCase` method. The demo also includes a `findByPositionNear`
      * method which shows how you can use MongoDB's geo features.
      */
-    @Bean
-    public CommandLineRunner exampleQuery(CarRepository repository) {
+   // @Bean
+    public CommandLineRunner exampleQuery(CarMongodbRepository repository) {
         return args -> {
             repository.findByMakeIgnoringCase("honda").forEach(System.out::println);
             repository.findByPositionNear(FERRY_BUILDING, FIVE_MILES).forEach(System.err::println);
@@ -64,7 +64,7 @@ public class DataMongoApplication {
      * The `DataMongoDBApplication` show how queries are executed and how you can also use
      * MongoDB's GridFS to store blob data.
      */
-    @Bean
+    //@Bean
     public CommandLineRunner exampleGridFs(GridFsTemplate fs) {
         return args -> {
             //wirte
