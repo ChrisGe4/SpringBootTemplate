@@ -10,13 +10,13 @@ import java.util.List;
  * @author Chris.Ge
  */
 @Repository
-public class CarRepository {
+public class CarJdbcRepository {
 
     private final JdbcTemplate jdbc;
 
 
     @Autowired
-    public CarRepository(JdbcTemplate jdbc) {
+    public CarJdbcRepository(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }
 

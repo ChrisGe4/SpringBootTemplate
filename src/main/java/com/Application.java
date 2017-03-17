@@ -9,7 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.AbstractEnvironment;
 import org.springframework.core.env.Environment;
 
@@ -60,8 +59,9 @@ public class Application {
     //    }
 
     //lasting happen
-    @Bean
+    //@Bean - disabled
     public CommandLineRunner exampleQuery(CarRepository repository) {
+        System.out.printf("exmapleQuery");
         return args -> repository.findByMakeIgnoringCase("honda").forEach(System.err::println);
     }
 

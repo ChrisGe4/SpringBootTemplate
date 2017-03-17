@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author Chris.Ge
  */
 @RestController
-@RefreshScope
+@RefreshScope//need to use with config-server
 public class DatabaseRestController {
     private static final Logger logger = LoggerFactory.getLogger(DatabaseRestController.class);
 

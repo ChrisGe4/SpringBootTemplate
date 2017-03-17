@@ -18,7 +18,7 @@ public class DataJdbcApplication {
     }
 
     @Bean
-    public CommandLineRunner exampleQuery(CarRepository repository) {
+    public CommandLineRunner exampleQuery(CarJdbcRepository repository) {
         return args -> repository.findByMakeIgnoringCase("honda").forEach(System.out::println);
     }
 }

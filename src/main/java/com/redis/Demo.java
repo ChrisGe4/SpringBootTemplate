@@ -7,7 +7,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.support.collections.DefaultRedisMap;
-import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -15,7 +14,7 @@ import java.util.Map;
 /**
  * @author Chris.Ge
  */
-@Component
+//@Component -disabled
 public class Demo implements CommandLineRunner {
     private static Log logger = LogFactory.getLog(Demo.class);
     private final StringRedisTemplate template;
