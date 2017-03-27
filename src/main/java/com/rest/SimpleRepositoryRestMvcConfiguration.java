@@ -13,10 +13,10 @@ public class SimpleRepositoryRestMvcConfiguration extends RepositoryRestConfigur
 
     /*
     ///example/////
-     config.addResourceMappingForDomainType(Person.class)
+     config.addResourceMappingForDomainType(User.class)
           .addResourceMappingFor("lastName")
           .setPath("surname"); // Change 'lastName' to 'surname' in the JSON
-    config.addResourceMappingForDomainType(Person.class)
+    config.addResourceMappingForDomainType(User.class)
           .addResourceMappingFor("siblings")
           .setRel("siblings")
           .setPath("siblings"); // Pointless in this example,

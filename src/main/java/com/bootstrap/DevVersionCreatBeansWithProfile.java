@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.web.client.RestTemplate;
@@ -48,6 +49,8 @@ public class DevVersionCreatBeansWithProfile {
     }
 
     @Bean
+    /**attention*/
+    @ConditionalOnMissingBean(RestTemplate.class)
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }

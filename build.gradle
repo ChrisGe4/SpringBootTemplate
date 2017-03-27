@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.0.BUILD-SNAPSHOT'
+        springBootVersion = '1.5.2.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -54,6 +54,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile("org.springframework.boot:spring-boot-starter-data-elasticsearch")
     compile("org.springframework.boot:spring-boot-starter-data-rest")
+    compile("org.springframework.boot:spring-boot-starter-batch")
+    compile("org.springframework.boot:spring-boot-starter-integration")
 
 //    compile group: 'com.h2database', name: 'h2'
     compile group: 'org.postgresql', name: 'postgresql'
@@ -67,6 +69,13 @@ dependencies {
     compile 'org.springframework.cloud:spring-cloud-config-client'
 
     compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+    compile 'org.springframework.integration:spring-integration-file'
+    compile 'org.springframework.batch:spring-batch-integration'
+
+
+
+
+
     testCompile("org.springframework.boot:spring-boot-starter-test")
 
 }
@@ -83,3 +92,12 @@ You should only use simple text with @ConfigurationProperties field Javadoc sinc
 compileJava.dependsOn(processResources)
 
 defaultTasks = ['clean', 'build']
+
+
+flyway {
+    url = 'jdbc:postgresql://10.63.70.95:5432/test'
+    user = 'test'
+    password = 'test'
+    // schemas = ['schema1', 'schema2', 'schema3']
+    // placeholders = ['keyABC'          : 'valueXYZ', 'otherplaceholder': 'value123']
+}

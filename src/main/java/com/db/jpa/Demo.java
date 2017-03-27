@@ -15,7 +15,7 @@ public class Demo {
         return args -> {
 
 //            Arrays.asList("chris", "tom").forEach(name -> personRepository
-            //                .save(new Person(name, (name + "@email.com").toLowerCase())));
+            //                .save(new User(name, (name + "@email.com").toLowerCase())));
             personRepository.findAll().forEach(System.err::println);
         };
 

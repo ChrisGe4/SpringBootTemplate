@@ -1,0 +1,1 @@
+CREATE TABLE USER_T(first varchar(100),last varchar(100),email varchar(100));

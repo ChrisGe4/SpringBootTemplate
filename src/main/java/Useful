@@ -1,0 +1,22 @@
+1. use InitializingBean - verify config setup. eg:
+ /**
+     * The optional instance of the Jackson {@link ObjectMapper}, if non has been configured a new instance
+     * will be created.
+     */
+    @Autowired(required = false)
+    private ObjectMapper objectMapper;
+
+    /**
+     * Initializes all needed properties.
+     *
+     * @throws Exception if any error occurs
+     */
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        if (objectMapper == null) {
+            objectMapper = new ObjectMapper();
+        }
+    }
+
+    ---see DataMongoApplication.class
+

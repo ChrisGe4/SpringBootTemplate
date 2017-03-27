@@ -27,6 +27,7 @@ public class PersonResourceProcessor implements ResourceProcessor<Resource<Perso
     @Override
     public Resource<Person> process(Resource<Person> resource) {
         String id = Long.toString(resource.getContent().getId());
+        // expand method replaces query parameter /people/{id}/photo {id} with id
         UriComponents uriComponent =
             ServletUriComponentsBuilder.fromCurrentContextPath().path("/people/{id}/photo")
                 .buildAndExpand(id);
