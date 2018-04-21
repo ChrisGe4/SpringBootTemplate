@@ -13,26 +13,25 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath "gradle.plugin.com.boxfuse.client:flyway-release:4.1.2"
 
     }
 }
 
 
 apply plugin: 'java'
-//apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-apply plugin: "org.flywaydb.flyway"
 
 
 jar {
-    baseName = 'springTraining'
+    baseName = 'bc-deploy-service'
     version = '0.0.1-SNAPSHOT'
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+compileJava {
+    sourceCompatibility = 9
+    targetCompatibility = 9
+}
 
 repositories {
     mavenCentral()
@@ -48,19 +47,9 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
 
-    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile('org.springframework.boot:spring-boot-starter-data-redis')
-    compile("org.springframework.boot:spring-boot-starter-jdbc")
-    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
-    compile("org.springframework.boot:spring-boot-starter-data-elasticsearch")
     compile("org.springframework.boot:spring-boot-starter-data-rest")
-    compile("org.springframework.boot:spring-boot-starter-batch")
     compile("org.springframework.boot:spring-boot-starter-integration")
 
-//    compile group: 'com.h2database', name: 'h2'
-    compile group: 'org.postgresql', name: 'postgresql'
-    compile group: 'org.flywaydb', name: 'flyway-core'
-    runtime group: 'mysql', name: 'mysql-connector-java'
 
 
 
@@ -71,9 +60,6 @@ dependencies {
     compile 'org.springframework.cloud:spring-cloud-starter-eureka'
     compile 'org.springframework.integration:spring-integration-file'
     compile 'org.springframework.batch:spring-batch-integration'
-
-
-
 
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
@@ -92,12 +78,3 @@ You should only use simple text with @ConfigurationProperties field Javadoc sinc
 compileJava.dependsOn(processResources)
 
 defaultTasks = ['clean', 'build']
-
-
-flyway {
-    url = 'jdbc:postgresql://10.63.70.95:5432/test'
-    user = 'test'
-    password = 'test'
-    // schemas = ['schema1', 'schema2', 'schema3']
-    // placeholders = ['keyABC'          : 'valueXYZ', 'otherplaceholder': 'value123']
-}

@@ -10,7 +10,7 @@ server:
 
 spring:
   application:
-    name: spring-boot-template #will look for {name}.properties/yml in the server
+    name: hyperledger-deploy-service #will look for {name}.properties/yml in the server
 #this is for client setup, will go to localhost:8888/spring-boot-template/master to file the settings
   cloud:
     config:
