@@ -13,7 +13,7 @@ import java.util.Optional;
 @ControllerAdvice // can assign pkg
 @RequestMapping(produces = "application/vnd.error")
 @ResponseBody
-public class ExceptionControllerAdvice {
+public class PersonControllerAdvice {
 
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
@@ -22,6 +22,11 @@ public class ExceptionControllerAdvice {
         return this.error(ex, ex.getLocalizedMessage());
     }
 
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    @ExceptionHandler(PersonNotFoundException.class)
+    public VndErrors personNotFoundException(PersonNotFoundException ex) {
+        return this.error(ex, ex.getPersonId() + "");
+    }
 
 
     private <E extends Exception> VndErrors error(E e, String logref) {
